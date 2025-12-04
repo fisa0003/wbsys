@@ -1,0 +1,291 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LockerDrawer from '../components/LockerDrawer.astro'
+
+// Mock data för lockers
+const lockers = [
+  { id: 1, status: 'free' },
+  { id: 2, status: 'free' },
+  { id: 3, status: 'in-use', user: 'Robto' },
+  { id: 4, status: 'free' },
+  { id: 5, status: 'in-use', user: 'Robto' },
+  { id: 6, status: 'free' },
+  { id: 7, status: 'free' },
+  { id: 8, status: 'in-use', user: 'Robto' },
+  { id: 9, status: 'free' },
+  { id: 10, status: 'in-use', user: 'Robto' },
+  { id: 11, status: 'in-use', user: 'Robto' },
+  { id: 12, status: 'free' },
+];
+---
+
+<Layout title="Clothing locker - Sodra">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="/" class="breadcrumb-link">Overview</a>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-current">Clothing locker</span>
+  </nav>
+
+  <!-- Header section -->
+  <div class="page-header">
+    <div class="header-left">
+      <div class="locker-icon-large">
+                 <img src="/Clothinglocker.svg" alt="">
+      </div>
+      <div class="header-info">
+        <h1>Clothing locker</h1>
+        <div class="header-stats">
+          <span class="stat">26 free</span>
+          <span class="stat">12 in use</span>
+          <span class="stat">6 soon expiring</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-secondary">Activity</button>
+      <button class="btn-outline">⋮ Details</button>
+    </div>
+  </div>
+
+  <!-- Lockers section -->
+  <div class="lockers-container">
+    <div class="lockers-header">
+      <h2>Lockers <span class="badge">{lockers.length}</span></h2>
+    </div>
+
+    <div class="lockers-grid">
+      {lockers.map((locker) => (
+        <div class={`locker-card ${locker.status}`}>
+          <div class="locker-visual">
+            {/* Visual representation of locker */}
+          </div>
+          <div class="locker-info">
+            <h3 class="locker-number">#{locker.id}</h3>
+            {locker.status === 'free' ? (
+              <p class="locker-status">Free</p>
+            ) : (
+              <div class="locker-status-in-use">
+                <span>In use</span>
+                <span class="user-icon"> <img src="/User.svg" alt=""> {locker.user}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</Layout>
+
+<style>
+  /* Breadcrumb */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  .breadcrumb-link {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .breadcrumb-link:hover {
+    color: #1a1a1a;
+  }
+
+  .breadcrumb-separator {
+    color: #999;
+  }
+
+  .breadcrumb-current {
+    color: #1a1a1a;
+  }
+
+  /* Page header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .header-left {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .locker-icon-large {
+    flex-shrink: 0;
+  }
+
+  .header-info h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 16px;
+  }
+
+  .stat {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn-secondary {
+    background: #E96537;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover {
+    background: #E96537;
+  }
+
+  .btn-outline {
+    background: white;
+    color: #1a1a1a;
+    border: 1px solid #e5e5e5;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-outline:hover {
+    border-color: #E96537;
+  }
+
+  /* Lockers section */
+  .lockers-container {
+    margin-top: 32px;
+  }
+
+  .lockers-header {
+    margin-bottom: 24px;
+  }
+
+  .lockers-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge {
+    background: #f0f0f0;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+
+  .lockers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .locker-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .locker-card:hover {
+    border-color: rgb(218, 218, 218)
+    ;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .locker-visual {
+    height: 120px;
+    background: #388425;
+  }
+
+  .locker-card.in-use .locker-visual {
+    background: #E96537;
+  }
+
+  .locker-info {
+    padding: 16px;
+  }
+
+  .locker-number {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+  }
+
+  .locker-status {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .locker-status-in-use {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .user-icon {
+    font-size: 13px;
+    color: #999;
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .header-actions {
+      width: 100%;
+    }
+
+    .btn-secondary,
+    .btn-outline {
+      flex: 1;
+    }
+
+    .lockers-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+</style>

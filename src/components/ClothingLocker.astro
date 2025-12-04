@@ -1,0 +1,58 @@
+
+    <div class="lockers-grid">
+      <div class="locker-card">
+        <div class="locker-icon">
+          <img src="/Clothinglocker.svg" alt="">
+        </div>
+        <h3 class="locker-name">Clothing locker</h3>
+        <div class="locker-stats-row">
+          <span class="stat-item"><img src="/Maximize.svg" alt="">
+ 26 free</span>
+          <span class="stat-item"> <img src="/Lock.svg" alt=""> 12 in use</span>
+          <span class="stat-item"> <img src="/Triangle.svg" alt=""> 6 soon expiring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <style>
+
+          .lockers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+
+         .locker-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 24px
+  }
+
+  .locker-card:hover {
+    background-color: #f0d7ca;
+transition: all 0.2s;    
+cursor: pointer;
+
+  }
+
+  .locker-icon {
+    margin-bottom: 16px;
+  }
+
+  .locker-name {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+  }
+
+  .locker-stats-row {
+    color: rgb(100, 100, 100);
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+  </style>
