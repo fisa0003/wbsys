@@ -1,0 +1,119 @@
+---
+interface Action {
+  text: string;
+  link: string;
+  img: string;
+}
+
+interface Props {
+  date: string;
+  actions: Action[];
+}
+
+const { date, actions } = Astro.props;
+---
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Today's actions <span class="date">{date}</span></h3>
+    <button class="expand-btn">⛶</button>
+  </div>
+   <div class="actions-list">
+    {actions.map((action) => (
+      <a href={action.link} class="action-item">
+        
+        {action.img && (
+          <div class="action-icon">
+            <img src={action.img} alt="" />
+          </div>
+        )}
+        <span class="action-text">{action.text}</span>
+        <span class="action-arrow">→</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .date {
+    color: #999;
+    font-weight: 400;
+  }
+
+  .expand-btn {
+    background: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .expand-btn:hover {
+    background: #f9f9f9;
+  }
+
+  .actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-icon img {
+    height: 20px;
+  }
+
+  .action-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: all 0.2s;
+  }
+
+  .action-item:hover {
+    background: #f9f9f9;
+    border-color: #EC7D4A;
+  }
+
+
+
+  .action-text {
+    flex: 1;
+    font-size: 14px;
+  }
+
+  .action-arrow {
+    color: #999;
+    font-size: 18px;
+  }
+</style>

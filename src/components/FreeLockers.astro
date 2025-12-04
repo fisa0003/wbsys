@@ -1,0 +1,94 @@
+---
+interface Props {
+  free: number;
+  total: number;
+  change: number;
+}
+
+const { free, total, change } = Astro.props;
+---
+
+<div class="card">
+  <h3 class="card-title">Free lockers</h3>
+  <div class="locker-stats">
+    <div class="locker-number">{free}</div>
+    <div class="locker-total">out of {total}</div>
+  </div>
+  <div class="locker-change">
+            <img src="/Trendingup-green.svg" alt="">
+    <span class="trend-text">+{change} since yesterday</span>
+  </div>
+  <div class="bar-chart">
+    {Array.from({ length: total }).map((_, i) => (
+      <div class={`bar ${i < free ? 'active' : ''}`}></div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .card {
+    background-image:  url('/Freelockersbackground.png'); /* lägg till sökvägen från public */
+  background-size: cover; 
+  background-position: center; /* centrerar bilden */
+  background-repeat: no-repeat;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .locker-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .locker-number {
+    font-size: 42px;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  .locker-total {
+    font-size: 16px;
+    color: #666;
+  }
+
+  .locker-change {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    color: #388425;
+    font-size: 14px;
+  }
+
+  .trend-icon {
+    font-size: 12px;
+  }
+
+  .bar-chart {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 60px;
+  }
+
+  .bar {
+    flex: 1;
+    background: #e5e5e5;
+    border-radius: 100px;
+    height: 100%;
+  }
+
+  .bar.active {
+    background: #E0511A;
+  }
+</style>

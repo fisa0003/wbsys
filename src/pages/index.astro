@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FreeLockers from '../components/FreeLockers.astro';
+import NotificationsCard from '../components/NotificationsCard.astro';
+import TodaysActionsCard from '../components/TodaysActionsCard.astro';
+---
+
+<Layout title="Overview - Sodra">
+  <div class="welcome-section">
+	<div class="first-title">
+            <img src="/Sun.svg" alt="">
+    <h1>Welcome, Kajsa!</h1>
+	</div>
+    <p class="subtitle">Manage your lockers, send notifications and keep receivers updated.</p>
+  </div>
+
+  <div class="dashboard-grid">
+    <FreeLockers free={16} total={26} change={2} />
+    <NotificationsCard />
+    <TodaysActionsCard 
+      date="20 November, 2025"
+      actions={[
+        { text: "Send notification to Robto", img: "/Noteavatar.png", link: "#" },
+        { text: "Fill locker with new delivery", img: "/Noteavatar.png", link: "#" }
+		
+      ]}
+    />
+  </div>
+
+  <!-- My lockers section -->
+  <div class="lockers-section">
+    <h2 class="section-title">
+      My lockers
+      <span class="badge">1</span>
+    </h2>
+
+    <div class="lockers-grid">
+      <div class="locker-card">
+        <div class="locker-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="8" y="8" width="32" height="32" rx="6" fill="#ff5733" stroke="#ff5733" stroke-width="2"/>
+            <rect x="18" y="20" width="12" height="8" rx="2" fill="white"/>
+          </svg>
+        </div>
+        <h3 class="locker-name">Clothing locker</h3>
+        <div class="locker-stats-row">
+          <span class="stat-item">🔓 26 free</span>
+          <span class="stat-item">📦 12 in use</span>
+          <span class="stat-item">⚠️ 6 soon expiring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+.first-title
+{display: flex;
+gap: 8px;}
+
+  .welcome-section {
+    margin-bottom: 32px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: #666;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  /* My lockers section */
+  .lockers-section {
+    margin-top: 48px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge {
+    background: #f0f0f0;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+
+  .lockers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .locker-card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .locker-icon {
+    margin-bottom: 16px;
+  }
+
+  .locker-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+  }
+
+  .locker-stats-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-item {
+    font-size: 13px;
+    color: #666;
+  }
+
+  @media (max-width: 1200px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

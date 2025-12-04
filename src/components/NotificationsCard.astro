@@ -1,0 +1,85 @@
+---
+// NotificationsCard.astro
+---
+
+<div class="card">
+  <h3 class="card-title">Auto-notifications sent</h3>
+  <div class="chart-container">
+
+    <div class="chart-legend">
+      <div class="legend-item">
+        <span class="legend-color" style="background: #E3401A;"></span>
+        <span>This week</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-color" style="background: #EC7D4A;"></span>
+        <span>Last week</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-color" style="background: #F7D0C1"></span>
+        <span>Week 47</span>
+    </div>
+      </div>
+       <div class="bubble-chart">
+              <img src="Bubblediagram.png" alt="">
+    </div>
+           
+              
+
+  </div>
+</div>
+
+<style>
+  .card {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .chart-container {
+    display: flex;
+    align-items: baseline;
+    gap: 58px;
+  }
+
+.bubble-chart img {
+    width: 170px;   /* eller t.ex. 50% för responsiv storlek */
+    height: auto;  /* behåller proportioner */
+}
+
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.85;
+  }
+
+
+  .chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #666;
+  }
+
+  .legend-color {
+    width: 27px;
+    height: 5px;
+    border-radius: 100px;
+  }
+</style>

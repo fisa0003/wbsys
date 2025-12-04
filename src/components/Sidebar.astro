@@ -1,0 +1,165 @@
+---
+// Sidebar.astro
+---
+
+
+<aside class="sidebar">
+  <div class="logo">
+
+    <span class="logo-text">Sodra</span>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-section">
+      <h3 class="nav-heading">GENERAL</h3>
+      <ul class="nav-list">
+        <li>
+          <a href="/overview" class="nav-link active">
+            <img src="/Home.svg" alt="">
+            <span>Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="/statistics" class="nav-link">
+            <img src="/Trendingup.svg" alt="">
+            <span>Statistics</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="nav-section">
+      <h3 class="nav-heading">MY LOCKERS</h3>
+      <ul class="nav-list">
+        <li>
+          <a href="/clothing-locker" class="nav-link">
+            <img src="/Package.svg" alt="">
+            <span>Clothing locker</span>
+          </a>
+        </li>
+        <li>
+          <a href="/it-locker" class="nav-link">
+            <img src="/Lock.svg" alt="">
+            <span>IT locker</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="nav-section settings">
+      <h3 class="nav-heading">SETTINGS</h3>
+      <ul class="nav-list">
+        <li>
+          <a href="/users" class="nav-link">
+            <img src="/Users.svg" alt="">
+            <span>Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="/lockers" class="nav-link">
+            <img src="/Lock.svg" alt="">
+            <span>Lockers</span>
+          </a>
+        </li>
+        <li>
+          <a href="/company" class="nav-link">
+            <img src="/Shoppingbag.svg" alt="">
+            <span>Company</span>
+          </a>
+        </li>
+        <li>
+          <a href="/notifications" class="nav-link">
+            <img src="/Messagecircle.svg" alt="">
+            <span>Notifications</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</aside>
+
+<style>
+  .sidebar {
+    width: 240px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 16px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1a1a1a;
+  }
+
+  .logo-icon {
+    font-size: 18px;
+  }
+
+  .nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+  }
+
+  .nav-section {
+    margin-bottom: 24px;
+  }
+
+  .nav-section.settings {
+    margin-top: auto;
+  }
+
+  .nav-heading {
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0px 16px;
+    margin: 0 0 4px 0;
+  }
+
+  .nav-list {
+    list-style: none;
+    padding: 12px;
+    margin: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    color: #4a4a4a;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    border-radius: 6px;
+  }
+
+  .nav-link:hover {
+    background-color: #f0f0f0;
+        border-radius: 6px;
+
+  }
+
+  .nav-link.active {
+    background-color: #f0d7ca;
+    color: #1a1a1a;
+  }
+
+  .icon {
+    font-size: 16px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
