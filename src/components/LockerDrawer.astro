@@ -284,14 +284,14 @@
 
   .stat-number {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 500;
     color: #1a1a1a;
     margin-bottom: 4px;
   }
 
   .stat-date {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     color: #1a1a1a;
     margin-bottom: 4px;
   }
@@ -404,7 +404,7 @@
     });
 
     // Make function globally available
-    (window as any).openLockerDrawer = openDrawer;
+    window.openLockerDrawer = openDrawer;
   }
 
   // Initialize on page load

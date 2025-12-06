@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LockerDrawer from '../components/LockerDrawer.astro'
+import LockerDrawer from '../components/LockerDrawer.astro';
 
 // Mock data för lockers
 const lockers = [
@@ -31,7 +31,7 @@ const lockers = [
   <div class="page-header">
     <div class="header-left">
       <div class="locker-icon-large">
-                 <img src="/Clothinglocker.svg" alt="">
+        <img src="/Clothinglocker.svg" alt="">
       </div>
       <div class="header-info">
         <h1>Clothing locker</h1>
@@ -56,7 +56,10 @@ const lockers = [
 
     <div class="lockers-grid">
       {lockers.map((locker) => (
-        <div class={`locker-card ${locker.status}`}>
+        <div 
+          class={`locker-card ${locker.status}`}
+          onclick={`openLockerDrawer(${locker.id}, '${locker.status}')`}
+        >
           <div class="locker-visual">
             {/* Visual representation of locker */}
           </div>
@@ -67,7 +70,10 @@ const lockers = [
             ) : (
               <div class="locker-status-in-use">
                 <span>In use</span>
-                <span class="user-icon"> <img src="/User.svg" alt=""> {locker.user}</span>
+                <span class="user-icon">
+                  <img src="/Users.svg" alt="" class="user-avatar">
+                  {locker.user}
+                </span>
               </div>
             )}
           </div>
@@ -76,6 +82,8 @@ const lockers = [
     </div>
   </div>
 
+  <!-- Locker Drawer -->
+  <LockerDrawer />
 </Layout>
 
 <style>
@@ -127,7 +135,7 @@ const lockers = [
 
   .header-info h1 {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 12px;
     color: #1a1a1a;
   }
@@ -162,7 +170,7 @@ const lockers = [
   }
 
   .btn-secondary:hover {
-    background: #E96537;
+    background: #d65730;
   }
 
   .btn-outline {
@@ -225,8 +233,7 @@ const lockers = [
   }
 
   .locker-card:hover {
-    border-color: rgb(218, 218, 218)
-    ;
+    border-color: #dadada;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   }
 
@@ -245,7 +252,7 @@ const lockers = [
 
   .locker-number {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 8px;
     color: #1a1a1a;
   }
@@ -253,6 +260,7 @@ const lockers = [
   .locker-status {
     font-size: 14px;
     color: #666;
+    margin: 0;
   }
 
   .locker-status-in-use {
@@ -266,6 +274,14 @@ const lockers = [
   .user-icon {
     font-size: 13px;
     color: #999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .user-avatar {
+    width: 14px;
+    height: 14px;
   }
 
   @media (max-width: 768px) {

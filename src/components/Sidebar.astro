@@ -1,11 +1,18 @@
 ---
 // Sidebar.astro
----
+const currentPath = Astro.url.pathname;
 
+// Helper function to check if link is active
+const isActive = (path: string) => {
+  if (path === '/' || path === '/overview') {
+    return currentPath === '/' || currentPath === '/overview';
+  }
+  return currentPath.startsWith(path);
+};
+---
 
 <aside class="sidebar">
   <div class="logo">
-
     <span class="logo-text">Sodra</span>
   </div>
 
@@ -14,14 +21,14 @@
       <h3 class="nav-heading">GENERAL</h3>
       <ul class="nav-list">
         <li>
-          <a href="/overview" class="nav-link active">
-            <img src="/Home.svg" alt="">
+          <a href="/" class={`nav-link ${isActive('/') ? 'active' : ''}`}>
+            <img src="/Home.svg" alt="" class="icon">
             <span>Overview</span>
           </a>
         </li>
         <li>
-          <a href="/statistics" class="nav-link">
-            <img src="/Trendingup.svg" alt="">
+          <a href="/statistics" class={`nav-link ${isActive('/statistics') ? 'active' : ''}`}>
+            <img src="/Trendingup.svg" alt="" class="icon">
             <span>Statistics</span>
           </a>
         </li>
@@ -32,14 +39,14 @@
       <h3 class="nav-heading">MY LOCKERS</h3>
       <ul class="nav-list">
         <li>
-          <a href="/clothing-locker" class="nav-link">
-            <img src="/Package.svg" alt="">
+          <a href="/clothing" class={`nav-link ${isActive('/clothing') ? 'active' : ''}`}>
+            <img src="/Package.svg" alt="" class="icon">
             <span>Clothing locker</span>
           </a>
         </li>
         <li>
-          <a href="/it-locker" class="nav-link">
-            <img src="/Lock.svg" alt="">
+          <a href="/it-locker" class={`nav-link ${isActive('/it-locker') ? 'active' : ''}`}>
+            <img src="/Lock.svg" alt="" class="icon">
             <span>IT locker</span>
           </a>
         </li>
@@ -50,26 +57,26 @@
       <h3 class="nav-heading">SETTINGS</h3>
       <ul class="nav-list">
         <li>
-          <a href="/users" class="nav-link">
-            <img src="/Users.svg" alt="">
+          <a href="/users" class={`nav-link ${isActive('/users') ? 'active' : ''}`}>
+            <img src="/Users.svg" alt="" class="icon">
             <span>Users</span>
           </a>
         </li>
         <li>
-          <a href="/lockers" class="nav-link">
-            <img src="/Lock.svg" alt="">
+          <a href="/lockers" class={`nav-link ${isActive('/lockers') ? 'active' : ''}`}>
+            <img src="/Lock.svg" alt="" class="icon">
             <span>Lockers</span>
           </a>
         </li>
         <li>
-          <a href="/company" class="nav-link">
-            <img src="/Shoppingbag.svg" alt="">
+          <a href="/company" class={`nav-link ${isActive('/company') ? 'active' : ''}`}>
+            <img src="/Shoppingbag.svg" alt="" class="icon">
             <span>Company</span>
           </a>
         </li>
         <li>
-          <a href="/notifications" class="nav-link">
-            <img src="/Messagecircle.svg" alt="">
+          <a href="/notifications" class={`nav-link ${isActive('/notifications') ? 'active' : ''}`}>
+            <img src="/Messagecircle.svg" alt="" class="icon">
             <span>Notifications</span>
           </a>
         </li>
@@ -82,9 +89,15 @@
   .sidebar {
     width: 240px;
     height: 100vh;
+    background-color: #fafafa;
+    border-right: 1px solid #e5e5e5;
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
   }
 
   .logo {
@@ -95,10 +108,6 @@
     font-weight: 600;
     font-size: 16px;
     color: #1a1a1a;
-  }
-
-  .logo-icon {
-    font-size: 18px;
   }
 
   .nav {
@@ -146,8 +155,6 @@
 
   .nav-link:hover {
     background-color: #f0f0f0;
-        border-radius: 6px;
-
   }
 
   .nav-link.active {
@@ -156,10 +163,16 @@
   }
 
   .icon {
-    font-size: 16px;
     width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 </style>
