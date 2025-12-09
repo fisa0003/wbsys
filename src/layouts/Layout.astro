@@ -41,20 +41,22 @@ const { title = 'Sodra' } = Astro.props;
   }
 
   .app-container {
-    display: flex;
-    min-height: 100vh;
-  }
+  display: flex;
+  min-height: 100vh;
+}
 
-  .main-content {
-    flex: 1;
-    margin: 20px;
-    padding: 32px 42px;
-    overflow-y: auto;
-	background-color: white;
-	border-radius: 16px;
-	border: 1px solid #e5e5e5;
-
-  }
+.main-content {
+  flex: 1;
+  margin-left: 240px; /* Samma bredd som sidebaren */
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 32px 42px;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+}
 
   h1 {
     font-size: 28px;
